@@ -1,17 +1,24 @@
-class plant:
+class Plant:
     def __init__(self, name, height, age):
         self.name = name
         self.height = height
         self.age = age
 
 
-Rose = plant("Rose", "25cm", "30 days")
-Oak = plant("Oak", "200cm", "365 days")
-Cactus = plant("Cactus", "5cm", "90 days")
-Sunflower = plant("Sunflower", "80cm", "45 days")
-Fern = plant("Fern", "15cm", "120 days")
-plants = [Rose, Oak, Cactus, Sunflower, Fern]
+plants_data = {
+    "Rose": [25, 30],
+    "Oak": [200, 365],
+    "Cactus": [5, 90],
+    "Sunflower": [80, 45],
+    "Fern": [15, 120],
+}
+plants = []
+for name in plants_data:
+    height, age = plants_data[name]
+    plants.append(Plant(name, height, age))
 print("=== Plant Factory Output ===")
+i = 0
 for p in plants:
-    print(f"Created: {p.name} ({p.height}, {p.age})")
-print("\nTotal plants created: 5")
+    print(f"Created: {p.name} ({p.height} cm, {p.age} days)")
+    i += 1
+print(f"\nTotal plants created: {i} ")

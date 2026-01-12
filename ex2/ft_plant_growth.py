@@ -7,8 +7,10 @@ class Plant:
     def get_info(self):
         return f"{self.name}: {self.height-1} cm, {self.age-1} days old"
 
-    def new_info(self):
+    def grow(self):
         self.height += 1
+
+    def grow_age(self):
         self.age += 1
 
 
@@ -23,15 +25,17 @@ for day in range(1, 8):
     if day == 1 or day == 7:
         print(f"=== Day {day} ===")
         for plant in Plants:
-            plant.new_info()
+            plant.grow()
+            plant.grow_age()
             if plant.name == target_plant:
                 print(plant.get_info())
     else:
         for plant in Plants:
-            plant.new_info()
+            plant.grow()
+            plant.grow_age()
 
 print("Growth this week:", end="")
 for plant in Plants:
     if plant.name == target_plant:
         new_height = plant.height - start_heights[plant.name] - 1
-        print(f"+{new_height}cm")
+        print(f" +{new_height}cm")
