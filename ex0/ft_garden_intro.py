@@ -1,3 +1,9 @@
+"""
+Garden Introduction Module
+
+This module demonstrates basic variables and print statements.
+"""
+
 plant_name = "Rose"
 height = 25
 age = 30

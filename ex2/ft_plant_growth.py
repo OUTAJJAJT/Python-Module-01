@@ -1,16 +1,38 @@
+"""
+Plant Growth Simulation Module
+
+This module simulates plant growth over a week and tracks growth metrics.
+"""
+
+
 class Plant:
+    """
+    Represents a plant that can grow over time.
+    Attributes:
+        name (str): The name of the plant
+        height (int): The current height in cm
+        age (int): The current age in days
+    """
+
     def __init__(self, name, height, age):
         self.name = name
         self.height = height
         self.age = age
 
     def get_info(self):
+        """
+        Get formatted plant information.
+        Returns:
+            str: Formatted string with plant info (height - 1, age - 1)
+        """
         return f"{self.name}: {self.height-1} cm, {self.age-1} days old"
 
     def grow(self):
+        """Increase plant height by 1 cm."""
         self.height += 1
 
     def grow_age(self):
+        """Increase plant age by 1 day."""
         self.age += 1
 
 

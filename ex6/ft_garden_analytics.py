@@ -1,53 +1,93 @@
+"""
+Garden Analytics Module
+
+This module manages gardens with plants and provides analytics including
+scoring, validation, and growth tracking.
+"""
+
+
 class Plant:
+    """Base class representing a generic plant."""
     def __init__(self, name, height):
+        """Initialize a Plant object."""
         self.name = name
         self.height = height
 
     @staticmethod
     def get_type():
+        """
+        Get the plant type.
+        Returns:
+            str: The plant type as a string
+        """
         return "regular"
 
 
 class FloweringPlant(Plant):
+    """
+    Represents a flowering plant.
+    Inherits from Plant and adds color and blooming status.
+    """
     def __init__(self, name, height, color):
+        """Initialize a FloweringPlant object."""
         super().__init__(name, height)
         self.color = color
         self.blooming = True
 
     @staticmethod
     def get_type():
+        """
+        Get the plant type.
+        Returns:
+            str: Returns 'flowering'
+        """
         return "flowering"
 
 
 class PrizeFlower(FloweringPlant):
+    """
+    Represents a prize-winning flower plant.
+    Inherits from FloweringPlant and adds prize points.
+    """
     def __init__(self, name, height, color, prize_points):
+        """Initialize a PrizeFlower object."""
         super().__init__(name, height, color)
         self.prize_points = prize_points
 
     @staticmethod
     def get_type():
+        """Get the plant type."""
         return "prize flowers"
 
 
 class Garden:
+    """
+    Represents a garden containing multiple plants.
+    Manages a collection of plants and provides analytics.
+    """
     def __init__(self, name):
+        """Initialize a Garden object."""
         self.name = name
         self.plants = []
 
     def add_plant(self, plant):
+        """Add a plant to the garden."""
         self.plants.append(plant)
 
     @staticmethod
     def calculate_growth(current_height, initial_height):
+        """Calculate the growth of a plant."""
         return current_height - initial_height
 
     def get_total_growth(self):
+        """Calculate total growth of all plants in the garden."""
         total = 0
         for plant in self.plants:
             total += Garden.calculate_growth(plant.height, 100)
         return total
 
     def get_plant_stats(self):
+        """Get statistics about plant types in the garden."""
         regular = 0
         flowering = 0
         prize = 0
@@ -61,6 +101,10 @@ class Garden:
         return regular, flowering, prize
 
     def calculate_score(self):
+        """
+        Calculate the garden score based on plant heights and bonuses.
+        Prize flowers receive bonus points (prize_points * 4).
+        """
         score = 0
         for plant in self.plants:
             score += plant.height
@@ -70,8 +114,10 @@ class Garden:
 
 
 class GardenManager:
+    """Manages multiple gardens and provides garden operations."""
     @classmethod
     def validate_all_heights(cls, gardens):
+        """Validate that all plants have positive heights."""
         for garden in gardens:
             for plant in garden.plants:
                 if plant.height <= 0:
@@ -80,12 +126,14 @@ class GardenManager:
 
     @staticmethod
     def help_plants_grow(gardens):
+        """Help all plants in all gardens grow by 1 cm."""
         for garden in gardens:
             for plant in garden.plants:
                 plant.height += 1
 
     @staticmethod
     def print_all_gardens_score(gardens):
+        """Print the scores of all gardens in a formatted string."""
         print("Garden Scores - ", end="")
         scores = []
         for garden in gardens:
