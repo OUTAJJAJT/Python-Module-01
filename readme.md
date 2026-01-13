@@ -7,6 +7,7 @@ A comprehensive educational Python project demonstrating fundamental programming
 This project is a series of progressive exercises that build upon each other to teach Python fundamentals. Each exercise (`ex0` through `ex6`) introduces new concepts and builds a complete garden management application.
 
 ## Project Structure
+```
 Python-Module-01/
 ├── ex0/
 │ └── ft_garden_intro.py # Basic variables and print statements
@@ -22,7 +23,7 @@ Python-Module-01/
 │ └── ft_plant_types.py # Inheritance and polymorphism
 └── ex6/
 └── ft_garden_analytics.py # Advanced OOP, composition, and analysis
-
+```
 
 ## Exercises
 
